@@ -2,14 +2,26 @@
 <html>
   <head>
     <meta charset="utf-8">
-    <title>Plot</title>
+    <title>Tenhou Ranking Graph</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <style>
+      #input {
+        white-space: pre;
+        overflow-wrap: normal;
+        overflow-x: scroll;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+        box-sizing: border-box;
+        width: 100%;
+      }
+    </style>
   </head>
   <body>
     <canvas id="chart"></canvas><br>
     Go to <a href=http://arcturus.su/tenhou/ranking/>http://arcturus.su/tenhou/ranking/</a>,
     paste the result below,
     and <button id="trigger">click me!</button><br>
-    <textarea id="input" cols=180 rows=20></textarea><br>
+    <textarea id="input" rows="20"></textarea><br>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.bundle.min.js" integrity="sha256-RASNMNlmRtIreeznffYMDUxBXcMRjijEaaGF/gxT6vw=" crossorigin="anonymous"></script>
     <script src="process.js"></script>
   </body>
