@@ -33,7 +33,7 @@
         { name: "\u516b\u6bb5", init: 1600, penalty: 100, advance: 3200, worth:  5200, relegation:  true},
         { name: "\u4e5d\u6bb5", init: 1800, penalty: 110, advance: 3600, worth:  6800, relegation:  true},
         { name: "\u5341\u6bb5", init: 2000, penalty: 120, advance: 4000, worth:  8600, relegation:  true},
-        { name: "\u5929\u9cf3", init: 0, penalty: 0, advance: 123456789, worth: 14400, relegation: false},
+        { name: "\u5929\u9cf3\u4f4d", init: 0, penalty: 0, advance:   0, worth: 14400, relegation: false},
     ];
     class Rank {
         constructor(rank) {
@@ -69,6 +69,8 @@
             return ranks[this.rank].worth + this.pt;
         }
         toString() {
+            if(this.rank == ranks.length - 1)
+                return ranks[this.rank].name;
             return ranks[this.rank].name + " " + this.pt + "pt";
         }
     };
@@ -115,16 +117,17 @@
             result.push({
                 x: it.date,
                 y: rank.worth(),
-                rank: new Rank(rank)
+                rank: new Rank(rank),
+                games: i,
             });
         }
         return result;
     }
     const pointBgColor = [
         "silver", "silver", "silver", "silver", "silver",
-        "silver", "silver", "silver", "silver", "silver",
-        "grey", "magenta", "red", "saddlebrown", "orange",
-        "yellow", "green", "teal", "blue", "purple",
+        "silver", "silver", "silver", "silver",
+        "yellow", "lime", "aqua", "blue", "fuchsia", "red",
+        "yellow", "lime", "aqua", "blue", "fuchsia",
         "black"
     ];
     function getPointBackgroundColor(pt) {
@@ -153,7 +156,10 @@
                 },
                 tooltips: {
                     callbacks: {
-                        label: x => result[x.index].rank
+                        label: function (x) {
+                            var r = result[x.index];
+                            return r.rank + " (" + r.games + ")";
+                        }
                     }
                 },
                 scales: {
