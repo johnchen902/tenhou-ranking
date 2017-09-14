@@ -182,6 +182,9 @@
                     display: false
                 },
                 tooltips: {
+                    titleFontSize: 16,
+                    bodyFontSize: 16,
+                    footerFontSize: 16,
                     callbacks: {
                         label: () => "Something went wrong!",
                     }
@@ -199,7 +202,7 @@
         chart.data.datasets[0].data = result;
         chart.options.tooltips.callbacks.label = function (x) {
             var r = result[x.index];
-            return r.rank + " (" + r.games + ")";
+            return r.rank + ", game " + (r.games + 1);
         };
         chart.update();
     }
