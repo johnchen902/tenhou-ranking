@@ -109,11 +109,13 @@
     }
     function process(input) {
         input = input.split(/[\r\n]+/);
-        var items = [];
+        var items = [], goodstr = "";
         for(let i = 0; i < input.length; i++) {
             let item = parse(input[i]);
-            if(item)
+            if (item) {
                 items.push(item);
+                goodstr += input[i] + "\n";
+            }
         }
         var rank = new Rank();
         var result = [];
@@ -138,7 +140,10 @@
                 games: i,
             });
         }
-        return result;
+        return {
+            result: result,
+            goodstr: goodstr,
+        };
     }
     const pointBgColor = [
         "silver", "silver", "silver", "silver", "silver",
@@ -152,10 +157,11 @@
     }
     var chart;
     function ontrigger() {
-        var input = document.getElementById("input").value;
-        var result = process(input);
+        var input = document.getElementById("input");
+        var result = process(input.value);
         initChart();
-        showResult(result);
+        showResult(result.result);
+        input.value = result.goodstr;
     }
     function initChart() {
         if (chart)
