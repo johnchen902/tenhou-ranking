@@ -29,7 +29,7 @@
         \u7279: 20,
         \u9cf3: 30
     };
-    const ranks = [
+    const ranks = [ // worth[x] = worth[x - 1] + advance[x - 1] - init[x]
         { name: "\u65b0\u4eba", init:    0, penalty:   0, advance:   30, worth:    40, relegation: false},
         { name: "\uff19\u7d1a", init:    0, penalty:   0, advance:   30, worth:    70, relegation: false},
         { name: "\uff18\u7d1a", init:    0, penalty:   0, advance:   30, worth:   100, relegation: false},
@@ -40,17 +40,17 @@
         { name: "\uff13\u7d1a", init:    0, penalty:   0, advance:  100, worth:   400, relegation: false},
         { name: "\uff12\u7d1a", init:    0, penalty:  10, advance:  100, worth:   500, relegation: false},
         { name: "\uff11\u7d1a", init:    0, penalty:  20, advance:  100, worth:   600, relegation: false},
-        { name: "\u521d\u6bb5", init:  200, penalty:  30, advance:  400, worth:   600, relegation:  true},
-        { name: "\u4e8c\u6bb5", init:  400, penalty:  40, advance:  800, worth:   800, relegation:  true},
-        { name: "\u4e09\u6bb5", init:  600, penalty:  50, advance: 1200, worth:  1200, relegation:  true},
-        { name: "\u56db\u6bb5", init:  800, penalty:  60, advance: 1600, worth:  1800, relegation:  true},
-        { name: "\u4e94\u6bb5", init: 1000, penalty:  70, advance: 2000, worth:  2600, relegation:  true},
-        { name: "\u516d\u6bb5", init: 1200, penalty:  80, advance: 2400, worth:  3600, relegation:  true},
-        { name: "\u4e03\u6bb5", init: 1400, penalty:  90, advance: 2800, worth:  4800, relegation:  true},
-        { name: "\u516b\u6bb5", init: 1600, penalty: 100, advance: 3200, worth:  5200, relegation:  true},
-        { name: "\u4e5d\u6bb5", init: 1800, penalty: 110, advance: 3600, worth:  6800, relegation:  true},
-        { name: "\u5341\u6bb5", init: 2000, penalty: 120, advance: 4000, worth:  8600, relegation:  true},
-        { name: "\u5929\u9cf3\u4f4d", init: 0, penalty: 0, advance:   0, worth: 14400, relegation: false},
+        { name: "\u521d\u6bb5", init:  200, penalty:  30, advance:  400, worth:   500, relegation:  true},
+        { name: "\u4e8c\u6bb5", init:  400, penalty:  40, advance:  800, worth:   500, relegation:  true},
+        { name: "\u4e09\u6bb5", init:  600, penalty:  50, advance: 1200, worth:   700, relegation:  true},
+        { name: "\u56db\u6bb5", init:  800, penalty:  60, advance: 1600, worth:  1100, relegation:  true},
+        { name: "\u4e94\u6bb5", init: 1000, penalty:  70, advance: 2000, worth:  1700, relegation:  true},
+        { name: "\u516d\u6bb5", init: 1200, penalty:  80, advance: 2400, worth:  2500, relegation:  true},
+        { name: "\u4e03\u6bb5", init: 1400, penalty:  90, advance: 2800, worth:  3500, relegation:  true},
+        { name: "\u516b\u6bb5", init: 1600, penalty: 100, advance: 3200, worth:  4700, relegation:  true},
+        { name: "\u4e5d\u6bb5", init: 1800, penalty: 110, advance: 3600, worth:  6100, relegation:  true},
+        { name: "\u5341\u6bb5", init: 2000, penalty: 120, advance: 4000, worth:  7700, relegation:  true},
+        { name: "\u5929\u9cf3\u4f4d", init: 0, penalty: 0, advance:   0, worth: 11700, relegation: false},
     ];
     class Rank {
         constructor(rank) {
