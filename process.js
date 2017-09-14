@@ -137,8 +137,12 @@
     function ontrigger() {
         var input = document.getElementById("input").value;
         var result = process(input);
-        if(chart)
-            chart.destroy();
+        initChart();
+        showResult(result);
+    }
+    function initChart() {
+        if (chart)
+            return;
         var ctx = document.getElementById("chart");
         chart = new Chart(ctx, {
             type: "line",
@@ -146,8 +150,8 @@
                 datasets: [{
                     fill: false,
                     steppedLine: true,
-                    pointBackgroundColor: result.map(getPointBackgroundColor),
-                    data: result
+                    pointBackgroundColor: [],
+                    data: [],
                 }]
             },
             options: {
@@ -156,10 +160,7 @@
                 },
                 tooltips: {
                     callbacks: {
-                        label: function (x) {
-                            var r = result[x.index];
-                            return r.rank + " (" + r.games + ")";
-                        }
+                        label: () => "Something went wrong!",
                     }
                 },
                 scales: {
@@ -169,6 +170,15 @@
                 }
             }
         });
+    }
+    function showResult(result) {
+        chart.data.datasets[0].pointBackgroundColor = result.map(getPointBackgroundColor);
+        chart.data.datasets[0].data = result;
+        chart.options.tooltips.callbacks.label = function (x) {
+            var r = result[x.index];
+            return r.rank + " (" + r.games + ")";
+        };
+        chart.update();
     }
     trigger.onclick = ontrigger;
 })();
