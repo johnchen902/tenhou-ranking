@@ -167,6 +167,12 @@
         if (chart)
             return;
         var ctx = document.getElementById("chart");
+        if (!ctx) {
+            ctx = document.createElement("canvas");
+            ctx.id = "chart";
+            var ctxholder = document.getElementById("chartHolder");
+            ctxholder.appendChild(ctx);
+        }
         chart = new Chart(ctx, {
             type: "line",
             data: {
